@@ -30,10 +30,6 @@
             </section>
         </main>
     </div>
-    <form th:action="'/post/' +${post.title} +'/addhashtag'" th:object ="${newHashtag}" method="POST">
-        <textarea name="hashtag" id="hashtag" cols="20" rows="2" placeholder="Leave a Hashtag!"></textarea>
-        <input type="submit" name="SEND" id="sendHashtag">
-    </form>
 
 </body>
 

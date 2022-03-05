@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/layout.css">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h1 class="header__title">Surviving Coding Boot Camp</h1>
+        <nav class="header__nav">
+            <div class="header__nav-item"><a href="/" class="header__nav-link">Home</a></div>
+            <div class="header__nav-item"><a href="/hashtags" class="header__nav-link">Hashtags</a></div>
+        </nav>
+<h2 th:text="${hashtag.hashtag}"></h2>
+<ul>
+    <li th:each = "topic: ${topics}">
+
+
+
+
+
+
+    </li>
+</ul>
+
+
+
+
+
+
+
+</body>
+</html>
