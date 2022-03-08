@@ -31,6 +31,16 @@
                    class="topics__nav-link"></a>
             </nav>
         </section>
+        <section class="hashtagTypes">
+            <ul>
+                <li th:each = "currentHashtag:${hashtags}">
+                    <a th:href="'/hashtag/' + ${currentHashtag.ID}" class=""
+                       th:text="${currentHashtag.Hashtag}">
+
+                    </a>
+                </li>
+            </ul>
+        </section>
     </main>
 </div>
 </body>

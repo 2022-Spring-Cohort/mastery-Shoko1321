@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="UTF-8">
@@ -27,10 +27,19 @@
                 <p th:text="${post.content}" class="post__content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque blanditiis, aut quae fuga id quis ut. 
                     Eligendi necessitatibus blanditiis officia, odio deleniti natus molestiae fugiat ex quod vel aliquam illum.
                 </p>
+                <ul>
+                    <li th:each ="hashtag :${post.hashtags}">
+                        <a
+                                th:href="'/hashtag/' + ${hashtag.ID}"
+                                th:text ="${ hashtag.hashtag}">
+
+                        </a>
+                    </li>
+                </ul>
             </section>
         </main>
     </div>
-    <form th:action="'/post/' +${post.title} +'/addhashtag'" th:object ="${newHashtag}" method="POST">
+    <form th:action="'/post/' +${post.id} +'/addHashtag'" th:object ="${newHashtag}" method="POST">
         <textarea name="hashtag" id="hashtag" cols="20" rows="2" placeholder="Leave a Hashtag!"></textarea>
         <input type="submit" name="SEND" id="sendHashtag">
     </form>

@@ -14,21 +14,41 @@ import org.springframework.stereotype.Component;
 @Component
 public class Populator implements CommandLineRunner {
 
-    @Autowired
-    HashtagRepository hashtagRepo;
-
+//    @Autowired
+//    HashtagRepository hashtagRepo;
+    private HashtagRepository hashtagRepo;
     private TopicRepository topicRepo;
     private PostRepository postRepo;
 
 
-    public Populator(TopicRepository topicRepo, PostRepository postRepo) {
+
+    public Populator(TopicRepository topicRepo, PostRepository postRepo, HashtagRepository hashtagRepo) {
 
         this.topicRepo = topicRepo;
         this.postRepo = postRepo;
+        this.hashtagRepo = hashtagRepo;
     }
 
     @Override
     public void run(String... args) throws Exception {
+
+        Hashtag fun = new Hashtag("#fun");
+        hashtagRepo.save(fun);
+        Hashtag boring = new Hashtag("#boring");
+        hashtagRepo.save(boring);
+        Hashtag interesting = new Hashtag("#interesting");
+        hashtagRepo.save(interesting);
+        Hashtag tldr = new Hashtag("#tldr");
+        hashtagRepo.save(tldr);
+        Hashtag easyread = new Hashtag("#ez read");
+        hashtagRepo.save(easyread);
+
+
+
+
+
+
+
 
         Topic topic1 = new Topic("Learning TDD");
         topicRepo.save(topic1);
@@ -38,22 +58,29 @@ public class Populator implements CommandLineRunner {
                 " veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis " +
                 "aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. " +
                 "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id " +
-                "est laborum.", "Tom");
+                "est laborum.", "Tom, " ,tldr);
         postRepo.save(post1);
         Post post2 = new Post("Test the Fear Away", topic1, "Lorem ipsum dolor sit amet, consectetur " +
                 "adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim" +
                 " veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis " +
                 "aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. " +
                 "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id " +
-                "est laborum.", "author");
+                "est laborum.", "author,", tldr);
         postRepo.save(post2);
         Post post3 = new Post("Unit Tests and You", topic1, "Lorem ipsum dolor sit amet, consectetur " +
                 "adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim" +
                 " veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis " +
                 "aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. " +
                 "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id " +
-                "est laborum.", "adsfijo");
+                "est laborum.", "adsfijo", tldr);
         postRepo.save(post3);
+
+//        post1.addHashtag(tldr);
+//        post2.addHashtag(boring);
+//        post3.addHashtag(easyread);
+
+
+
         Topic topic2 = new Topic("Battling Imposter Syndrome");
         topicRepo.save(topic2);
         Topic topic3 = new Topic("Introductory Java");
@@ -62,22 +89,9 @@ public class Populator implements CommandLineRunner {
         topicRepo.save(topic4);
 
 
-        Hashtag fun = new Hashtag("#fun");
-        Hashtag boring = new Hashtag("#boring");
-        Hashtag interesting = new Hashtag("#interesting");
-        Hashtag tldr = new Hashtag("#tldr");
-        Hashtag easyread = new Hashtag("#ez read");
 
 
-        hashtagRepo.save(fun);
-        hashtagRepo.save(boring);
-        hashtagRepo.save(interesting);
-        hashtagRepo.save(tldr);
-        hashtagRepo.save(easyread);
 
-        post1.addHashtag(tldr);
-        post2.addHashtag(boring);
-        post3.addHashtag(easyread);
     }
 
 }
