@@ -39,9 +39,9 @@
             </section>
         </main>
     </div>
-    <form th:action="'/post/' +${post.id} +'/addHashtag'" th:object ="${newHashtag}" method="POST">
+    <form th:action="'/posts/' +${post.id} +'/addhashtag'" th:object ="${newhashtag}" method="POST">
         <textarea name="hashtag" id="hashtag" cols="20" rows="2" placeholder="Leave a Hashtag!"></textarea>
-        <input type="submit" name="SEND" id="sendHashtag">
+        <input type="submit" name="SEND" id="sendhashtag">
     </form>
 
 </body>
